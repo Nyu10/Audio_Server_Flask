@@ -1,0 +1,19 @@
+M4A Audio
+    smaller in size higher in quality
+    used by Itunes
+    compatability issues
+
+FLAC
+    lossless compression
+    saves 60%
+    super uncompatible usually
+
+MP3
+    super compatible
+    compressed
+    decent overall sound quality
+
+WAV
+    usually uncompressed
+    waveform data stored presents an image that
+    demonstrates strength of volume and sound in specific parts of the WAV file

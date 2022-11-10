@@ -71,8 +71,8 @@ def downloadAudioData():
 def getList():
     files_json = getAllFilesWithMetadata()
     filtered_files_json = filter(request.args, files_json)
-    list_file_names = [key for key in filtered_files_json]
-    return {'files': list_file_names}
+    file_names = [key for key in filtered_files_json]
+    return {'files': file_names}
 
 @app.route('/info', methods =['GET'])
 def getInfo():
@@ -82,26 +82,4 @@ def getInfo():
 
 if __name__ == "__main__":
     app.run()
-'''
-POST Raw Audio Data and Store it
-
-GET
-"Query Parameter to Filter Results"
-
-List of Stored Files
-    gets all files with  parameter such as max duration
-    min duration
-    channel mapping?
-    sampling frequency?
-    bit depth
-Content of STored Files
-Metadata of Stored Files
-
-Eg: $ curl http://localhost/download?name=myfile.wav 
-
-Eg: $ curl http://localhost/list?maxduration=300 
-
-Eg: $ curl http://localhost/info?name=myfile.wav 
-
-'''
 

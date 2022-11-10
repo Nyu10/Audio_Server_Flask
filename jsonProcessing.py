@@ -1,4 +1,4 @@
-def tagToJson(tag):
+def tinyTagToJson(tag):
     json = {}
     json['album'] = tag.album      # album as string
     json['albumartist'] = tag.albumartist   # album artist as string

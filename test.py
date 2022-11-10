@@ -9,7 +9,7 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 audio_file_path = './Audio_Files'
 
 
-def tagToJson(tag):
+def tinyTagToJson(tag):
     json = {}
     json['album'] = tag.album      # album as string
     json['albumartist'] = tag.albumartist   # album artist as string
@@ -39,7 +39,7 @@ def getAudioFiles():
         metadata = TinyTag.get(full_file_path)
         # print(type(metadata))
         files_json.append(metadata)
-        fileJson = tagToJson(metadata)
+        fileJson = tinyTagToJson(metadata)
         print(fileJson)
         break
     return files_json

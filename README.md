@@ -1,4 +1,4 @@
-### Simple Flask Server to Handle Audio Projects
+### Flask Server to Handle Audio Projects and Filtering
 
 
 ## Run the app

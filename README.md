@@ -1,96 +1,64 @@
-Simple Flask Server to Handle Audio Projects
-
-Endpoints
-
-Post:
-
-Post Raw Audio Data
-
-Get:
-
-List of Stored Files
-Metadata of Stored Files (duration of Audio)
+### Simple Flask Server to Handle Audio Projects
 
 
-'''
-POST Raw Audio Data and Store it
+## Run the app
 
-GET
-"Query Parameter to Filter Results"
-
-List of Stored Files
-    gets all files with  parameter such as max duration
-    min duration
-    channel mapping?
-    sampling frequency?
-    bit depth
-Content of STored Files
-Metadata of Stored Files
-
-Eg: $ curl http://localhost/download?name=myfile.wav 
-
-Eg: $ curl http://localhost/list?maxduration=300 
-
-Eg: $ curl http://localhost/info?name=myfile.wav 
-
-'''
+    python app.py
 
 
+### Requests
 
-List Endpoint
-Returns FileNames that match the conditions
+`GET /info/`  
+Returns all files (with their meta dataa) matching (optional) query parameter criteria
+        
+    curl "http://localhost:5000/info/"
 
-Genre
-curl "http://localhost:5000/list?genre=Pop"
-expected: one republic, a.m4a, and flac
-'''
+    Min and Max Durations
+    curl "http://localhost:5000/info?minduration=120&maxduration=200"
+    expected: one republic 
 
+    MinDuration
+    curl "http://localhost:5000/info?minduration=120"
+    expected: one republic and a
 
-Info Endpoint
-Allows you to filter and also returns all metadata
-
-Examples
-
-Name
-curl "http://localhost:5000/info?name=b.mp3"
-expected: b.mp3
-
-
-MinDuration
-curl "http://localhost:5000/info?minduration=120"
-expected: one republic and a
-
-Min and Max Durations
-curl "http://localhost:5000/info?minduration=120&maxduration=200"
-expected: one republic 
+    Min and Max Durations
+    curl "http://localhost:5000/info?minduration=120&maxduration=200"
+    expected: one republic 
 
 
-Genre
-curl "http://localhost:5000/info?genre=Pop"
-expected: one republic, a.m4a, and flac
+    Genre
+    curl "http://localhost:5000/info?genre=Pop"
+    expected: one republic, a.m4a, and flac
 
-AlbumArtist
-curl "http://localhost:5000/info?albumartist=OneRepublic"
-expected: one republic
+    AlbumArtist
+    curl "http://localhost:5000/info?albumartist=OneRepublic"
+    expected: one republic
 
-Genre and Artist
-curl "http://localhost:5000/info?genre=Pop&albumartist=OneRepublic"
-expected: one republic
-
-
-
-POST
-curl -F "file=@TheWeekend.mp3" http://localhost:5000/post
-
-Not allowed File Type
-curl -F "file=@p3_starter_code.zip" http://localhost:5000/post
-
-'''
+    Genre and Artist
+    curl "http://localhost:5000/info?genre=Pop&albumartist=OneRepublic"
+    expected: one republic
 
 
-GET 
+`GET /list/`  
+Returns all file names matching (optional) query parameter criteria
+    
+    curl "http://localhost:5000/list/"
+    
+    Genre
+    curl "http://localhost:5000/list?genre=Pop"
+    expected: one republic, a.m4a, and flac
 
-Download 
+`GET /download/`  
+Downloads file from audio files folder 
 
-curl "http://localhost:5000/download?name=b.mp3" --output b.mp3
+    curl "http://localhost:5000/download?name=b.mp3" --output b.mp3
+
+`POST /post/`  
+Uploads file to audio Files Folder
+    
+
+    curl -F "file=@TheWeekend.mp3" http://localhost:5000/post
+
+    Not Allowed File Type (Will Error)
+    curl -F "file=@p3_starter_code.zip" http://localhost:5000/post
 

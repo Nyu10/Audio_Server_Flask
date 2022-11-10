@@ -11,7 +11,7 @@
 `GET /info/`  
 Returns all files (with their meta dataa) matching (optional) query parameter criteria
         
-    curl "http://localhost:5000/info/"
+    curl "http://localhost:5000/info"
 
     Min and Max Durations
     curl "http://localhost:5000/info?minduration=120&maxduration=200"
@@ -19,7 +19,7 @@ Returns all files (with their meta dataa) matching (optional) query parameter cr
 
     MinDuration
     curl "http://localhost:5000/info?minduration=120"
-    expected: one republic and a
+    expected: one republic, the weekend, a
 
     Min and Max Durations
     curl "http://localhost:5000/info?minduration=120&maxduration=200"
@@ -42,7 +42,7 @@ Returns all files (with their meta dataa) matching (optional) query parameter cr
 `GET /list/`  
 Returns all file names matching (optional) query parameter criteria
     
-    curl "http://localhost:5000/list/"
+    curl "http://localhost:5000/list"
     
     Genre
     curl "http://localhost:5000/list?genre=Pop"
